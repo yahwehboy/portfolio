@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YahwehBoy | Olalekan Omotayo — Ethical Hacker & Cybersecurity Expert</title>
+  <meta name="description" content="Portfolio of Yahwehboy, Nigeria's top ethical hacker and cybersecurity professional. Specializing in penetration testing, vulnerability assessment, and security consulting." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script type="text/javascript">
+  (function() {
+    // Initialize EmailJS with your Public Key
+    emailjs.init({
+      publicKey: "e4tWpNdNvBIAT4GDL",
+    });
+  })();
+</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --matrix-green: #00ff41;
+      --cyber-green: #0aff50;
+      --terminal-green: #39ff14;
+      --dark-bg: #0a0e0a;
+      --darker-bg: #050805;
+      --card-bg: #0f130f;
+      --border-green: #1a3a1a;
+      --text-green: #5aff6e;
+      --accent-orange: #ff6b35;
+      --accent-red: #ff1f4a;
+      --glow-green: rgba(0, 255, 65, 0.15);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--dark-bg);
+      color: #d0e0d0;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    code, .mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--darker-bg); }
+    ::-webkit-scrollbar-thumb { background: #1a3a1a; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #2a5a2a; }
+
+    /* Matrix Rain Canvas */
+    #matrix-canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.08;
+    }
+
+    /* Typing Cursor */
+    .typing-cursor::after {
+      content: '|';
+      animation: blink 1s step-end infinite;
+      color: var(--matrix-green);
+      font-weight: 300;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    /* Glow effects */
+    .glow-green {
+      box-shadow: 0 0 20px rgba(0, 255, 65, 0.08), 0 0 60px rgba(0, 255, 65, 0.03);
+    }
+    .glow-green:hover {
+      box-shadow: 0 0 30px rgba(0, 255, 65, 0.15), 0 0 80px rgba(0, 255, 65, 0.05);
+    }
+    .text-glow {
+      text-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+    }
+    .border-glow {
+      border-color: var(--border-green);
+      box-shadow: inset 0 0 20px rgba(0, 255, 65, 0.03);
+    }
+
+    /* Terminal header bar */
+    .terminal-bar {
+      background: #1a1d1a;
+      border-radius: 8px 8px 0 0;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid #2a2d2a;
+    }
+    .terminal-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+    }
+    .terminal-dot.red { background: #ff5f56; }
+    .terminal-dot.yellow { background: #ffbd2e; }
+    .terminal-dot.green { background: #27c93f; }
+
+    /* Animated skill bars */
+    .skill-bar {
+      height: 4px;
+      background: #1a2a1a;
+      border-radius: 2px;
+      overflow: hidden;
+      position: relative;
+    }
+    .skill-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--matrix-green), var(--cyber-green));
+      border-radius: 2px;
+      transition: width 1.2s ease-out;
+      position: relative;
+    }
+    .skill-bar-fill::after {
+      content: '';
+      position: absolute;
+      right: 0; top: 0;
+      width: 8px; height: 100%;
+      background: var(--cyber-green);
+      filter: blur(4px);
+    }
+
+    /* Animated border for cards */
+    .cyber-card {
+      position: relative;
+      background: var(--card-bg);
+      border: 1px solid var(--border-green);
+      border-radius: 12px;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .cyber-card:hover {
+      border-color: var(--matrix-green);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0, 255, 65, 0.08);
+    }
+
+    /* Glitch text effect */
+    .glitch {
+      position: relative;
+    }
+    .glitch::before,
+    .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      opacity: 0;
+    }
+    .glitch:hover::before {
+      animation: glitch-top 0.4s ease forwards;
+      color: var(--accent-red);
+      clip-path: inset(0 0 60% 0);
+    }
+    .glitch:hover::after {
+      animation: glitch-bottom 0.4s ease forwards;
+      color: var(--cyber-green);
+      clip-path: inset(60% 0 0 0);
+    }
+    @keyframes glitch-top {
+      0% { transform: translate(0); opacity: 0.8; }
+      50% { transform: translate(-3px, -2px); opacity: 0.6; }
+      100% { transform: translate(0); opacity: 0; }
+    }
+    @keyframes glitch-bottom {
+      0% { transform: translate(0); opacity: 0.8; }
+      50% { transform: translate(3px, 2px); opacity: 0.6; }
+      100% { transform: translate(0); opacity: 0; }
+    }
+
+    /* Floating particles */
+    .particle {
+      position: absolute;
+      width: 3px; height: 3px;
+      background: var(--matrix-green);
+      border-radius: 50%;
+      opacity: 0;
+      animation: float-up linear infinite;
+    }
+    @keyframes float-up {
+      0% { transform: translateY(100vh) scale(0); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+    }
+
+    /* Scanline overlay */
+    #scanlines {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 999;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 255, 65, 0.008) 2px,
+        rgba(0, 255, 65, 0.008) 4px
+      );
+    }
+
+    /* Mobile nav */
+    .nav-link {
+      position: relative;
+      color: #7a9a7a;
+      transition: color 0.3s;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0;
+      width: 0; height: 1px;
+      background: var(--matrix-green);
+      transition: width 0.3s;
+    }
+    .nav-link:hover {
+      color: var(--text-green);
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    /* Section reveal animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Certification badges 3D flip */
+    .cert-card {
+      perspective: 1000px;
+    }
+    .cert-inner {
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+    .cert-card:hover .cert-inner {
+      transform: rotateY(180deg);
+    }
+    .cert-front, .cert-back {
+      backface-visibility: hidden;
+    }
+    .cert-back {
+      transform: rotateY(180deg);
+    }
+
+    /* Tool tags */
+    .tool-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      border: 1px solid #1a3a1a;
+      background: rgba(0, 255, 65, 0.03);
+      transition: all 0.3s;
+    }
+    .tool-tag:hover {
+      border-color: var(--matrix-green);
+      background: rgba(0, 255, 65, 0.08);
+      box-shadow: 0 0 15px rgba(0, 255, 65, 0.1);
+      transform: translateY(-2px);
+    }
+
+    /* Typeform-like button */
+    .cyber-btn {
+      position: relative;
+      padding: 14px 32px;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--dark-bg);
+      background: linear-gradient(135deg, var(--matrix-green), var(--cyber-green));
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+      overflow: hidden;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .cyber-btn::before {
+      content: '';
+      position: absolute;
+      top: -2px; left: -2px;
+      right: -2px; bottom: -2px;
+      background: linear-gradient(135deg, var(--matrix-green), transparent, var(--cyber-green));
+      border-radius: 10px;
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .cyber-btn:hover::before {
+      opacity: 1;
+    }
+    .cyber-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0, 255, 65, 0.25);
+    }
+    .cyber-btn:active {
+      transform: translateY(0);
+    }
+
+    .cyber-btn-outline {
+      padding: 14px 32px;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--text-green);
+      background: transparent;
+      border: 1px solid var(--border-green);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .cyber-btn-outline:hover {
+      border-color: var(--matrix-green);
+      background: rgba(0, 255, 65, 0.05);
+      box-shadow: 0 0 20px rgba(0, 255, 65, 0.1);
+      transform: translateY(-2px);
+    }
+
+    /* Hexagon skill icon */
+    .hex-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Contact form */
+    .cyber-input {
+      width: 100%;
+      padding: 14px 18px;
+      background: rgba(0, 255, 65, 0.03);
+      border: 1px solid #1a3a1a;
+      border-radius: 8px;
+      color: #d0e0d0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      transition: all 0.3s;
+      outline: none;
+    }
+    .cyber-input:focus {
+      border-color: var(--matrix-green);
+      box-shadow: 0 0 20px rgba(0, 255, 65, 0.08);
+    }
+    .cyber-input::placeholder {
+      color: #3a5a3a;
+    }
+
+    /* Stats counter */
+    .stat-number {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--matrix-green), var(--cyber-green));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+      .stat-number { font-size: 2rem; }
+      #mobile-menu {
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+      #mobile-menu.hidden {
+        transform: translateY(-20px);
+        opacity: 0;
+        pointer-events: none;
+      }
+      #mobile-menu:not(.hidden) {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    /* Glow pulse for badges */
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 10px rgba(0, 255, 65, 0.1); }
+      50% { box-shadow: 0 0 25px rgba(0, 255, 65, 0.2); }
+    }
+    .pulse-glow {
+      animation: pulse-glow 3s ease-in-out infinite;
+    }
+
+    /* Status indicator */
+    .status-dot {
+      display: inline-block;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--matrix-green);
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; box-shadow: 0 0 6px var(--matrix-green); }
+      50% { opacity: 0.5; box-shadow: 0 0 12px var(--matrix-green); }
+    }
+
+    /* Horizontal scroll indicator for project cards */
+    .scroll-indicator {
+      display: flex;
+      gap: 6px;
+      justify-content: center;
+      margin-top: 24px;
+    }
+    .scroll-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #1a3a1a;
+      transition: all 0.3s;
+    }
+    .scroll-dot.active {
+      background: var(--matrix-green);
+      box-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+      width: 24px;
+      border-radius: 4px;
+    }
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            mono: ['JetBrains Mono', 'monospace'],
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+
+  <!-- Scanlines overlay -->
+  <div id="scanlines"></div>
+
+  <!-- Matrix Rain Canvas -->
+  <canvas id="matrix-canvas"></canvas>
+
+  <!-- Particle container -->
+  <div id="particles" class="fixed inset-0 pointer-events-none z-0" aria-hidden="true"></div>
+
+  <!-- ====== NAVIGATION ====== -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-[#0a0e0a]/90 backdrop-blur-xl border-b border-[#1a3a1a]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <!-- Logo -->
+        <a href="#hero" class="flex items-center gap-3 group">
+          <div class="px-2 h-9 rounded-lg bg-gradient-to-br from-[#00ff41] to-[#0aff50] flex items-center justify-center font-mono font-bold text-[#0a0e0a] text-sm group-hover:shadow-lg group-hover:shadow-[#00ff41]/20 transition-all duration-300">
+            YahwehBoy
+          </div>
+          <div class="hidden sm:block">
+            <span class="font-mono text-sm font-semibold text-[#d0e0d0]">Olalekan Omotayo</span>
+            <span class="font-mono text-[10px] text-[#3a5a3a] block leading-none">/etc/pentester</span>
+          </div>
+        </a>
+
+        <!-- Desktop nav -->
+        <div class="hidden md:flex items-center gap-8">
+          <a href="#about" class="nav-link text-sm font-mono">&lt;about /&gt;</a>
+          <a href="#skills" class="nav-link text-sm font-mono">&lt;skills /&gt;</a>
+          <a href="#projects" class="nav-link text-sm font-mono">&lt;projects /&gt;</a>
+          <a href="#contact" class="nav-link text-sm font-mono">&lt;contact /&gt;</a>
+        </div>
+
+        <!-- Resume CTA -->
+        <div class="hidden md:flex items-center gap-4">
+          <span class="flex items-center gap-2 text-xs font-mono text-[#3a5a3a]">
+            <span class="status-dot"></span>
+            Available for hire
+          </span>
+          <a href="#contact" class="cyber-btn text-xs !py-2 !px-5">Hire Me</a>
+        </div>
+
+        <!-- Mobile hamburger -->
+        <button id="menu-toggle" class="md:hidden p-2 rounded-lg hover:bg-[#1a3a1a]/30 transition-colors" aria-label="Toggle menu">
+          <svg class="w-6 h-6 text-[#7a9a7a]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-[#1a3a1a] bg-[#0a0e0a]/95 backdrop-blur-xl">
+      <div class="px-4 py-4 space-y-3">
+          <a href="#about" class="block py-2 text-sm font-mono text-[#7a9a7a] hover:text-[#d0e0d0] transition-colors">&lt;about /&gt;</a>
+          <a href="#skills" class="block py-2 text-sm font-mono text-[#7a9a7a] hover:text-[#d0e0d0] transition-colors">&lt;skills /&gt;</a>
+          <a href="#projects" class="block py-2 text-sm font-mono text-[#7a9a7a] hover:text-[#d0e0d0] transition-colors">&lt;projects /&gt;</a>
+          <a href="#contact" class="block py-2 text-sm font-mono text-[#7a9a7a] hover:text-[#d0e0d0] transition-colors">&lt;contact /&gt;</a>
+        <a href="#contact" class="cyber-btn text-xs w-full text-center mt-4 !py-3">Hire Me</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ====== HERO SECTION ====== -->
+  <section id="hero" class="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden">
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+
+      <!-- Terminal badge -->
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#1a3a1a] bg-[#0f130f]/80 mb-8 pulse-glow">
+        <span class="status-dot"></span>
+        <span class="font-mono text-xs text-[#7a9a7a]">System Online — Ready for engagement</span>
+      </div>
+
+      <!-- Main heading with glitch -->
+      <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+        <span class="text-[#d0e0d0]">I'm </span>
+        <span class="glitch text-[#00ff41] text-glow inline-block" data-text="Yahwehboy">
+          Olalekan Omotayo
+        </span>
+      </h1>
+
+      <!-- Typewriter -->
+      <div class="h-10 mb-8">
+        <p id="typewriter" class="text-lg sm:text-xl text-[#7a9a7a] font-mono typing-cursor inline"></p>
+      </div>
+
+      <!-- Tagline -->
+      <p class="text-[#5a7a5a] max-w-2xl mx-auto mb-10 text-sm sm:text-base leading-relaxed">
+        Ethical Hacker & Cybersecurity Professional — uncovering vulnerabilities before adversaries do.
+        <span class="text-[#7a9a7a] block mt-2 text-xs sm:text-sm">#1 Ranked Cybersecurity Expert in Nigeria</span>
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="#contact" class="cyber-btn">Initialize Contact</a>
+        <a href="#projects" class="cyber-btn-outline">View Operations</a>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+        <span class="text-[#3a5a3a] font-mono text-[10px] tracking-widest uppercase">Scroll</span>
+        <svg class="w-4 h-4 text-[#3a5a3a] animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== ABOUT SECTION ====== -->
+  <section id="about" class="relative py-24 lg:py-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="reveal">
+        <!-- Section header -->
+        <div class="flex items-center gap-4 mb-16">
+          <span class="font-mono text-[#00ff41] text-sm">// 01</span>
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#d0e0d0] font-mono">About</h2>
+          <div class="flex-1 h-px bg-gradient-to-r from-[#1a3a1a] to-transparent"></div>
+        </div>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div class="reveal space-y-6">
+          <!-- Terminal window -->
+          <div class="rounded-lg border border-[#1a3a1a] overflow-hidden">
+            <div class="terminal-bar">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+              <span class="font-mono text-[10px] text-[#5a7a5a] ml-2">~/whoami.sh</span>
+            </div>
+            <div class="p-5 bg-[#0a0e0a] font-mono text-xs sm:text-sm leading-relaxed space-y-2">
+              <p><span class="text-[#5aff6e]">yahwehboy@nigeria</span>:<span class="text-[#3a7a3a]">~</span>$ <span class="text-[#d0e0d0]">cat about.md</span></p>
+              <br/>
+              <p class="text-[#7a9a7a]">> With over <span class="text-[#00ff41]">3+ years</span> of experience in offensive and defensive cybersecurity, I specialize in:</p>
+              <br/>
+              <p class="text-[#7a9a7a]">> • Penetration Testing & Vulnerability Assessment</p>
+              <p class="text-[#7a9a7a]">> • Red Team Operations & Social Engineering</p>
+              <p class="text-[#7a9a7a]">> • Network Security & Architecture Review</p>
+              <p class="text-[#7a9a7a]">> • Malware Analysis & Reverse Engineering</p>
+              <p class="text-[#7a9a7a]">> • Web Development and Backend Engineering</p>
+              <p class="text-[#7a9a7a]">> • Security Auditing & Compliance (ISO 27001, NIST)</p>
+              <br/>
+              <p class="text-[#7a9a7a]">> I've secured <span class="text-[#00ff41]">5 organizations</span> across Nigeria,</p>
+              <p class="text-[#7a9a7a]">> fintech, healthcare, government, and e-commerce sectors.</p>
+              <br/>
+              <p class="text-[#7a9a7a]">> I've trained <span class="text-[#00ff41]">200+ students</span> across various organisation,</p>
+              <p class="text-[#7a9a7a]">> cybersecurity fundamentals, penetration testing, hands on lab, fullstack development.</p>
+              <br />
+              <p><span class="text-[#5aff6e]">yahwehboy@nigeria</span>:<span class="text-[#3a7a3a]">~</span>$ <span class="animate-pulse text-[#d0e0d0]">_</span></p>
+            </div>
+          </div>
+
+          <p class="text-[#5a7a5a] text-sm leading-relaxed">
+            My mission: to fortify Nigeria's digital landscape by identifying critical vulnerabilities and
+            training the next generation of cybersecurity professionals. I believe in ethical hacking as
+            a force for national cybersecurity resilience.
+          </p>
+        </div>
+
+        <div class="reveal space-y-6">
+          <!-- Stats grid -->
+          <div class="grid grid-cols-2 gap-4">
+            <div class="cyber-card p-6 text-center glow-green">
+              <div class="stat-number text-3xl lg:text-4xl">5+</div>
+              <p class="font-mono text-xs text-[#5a7a5a] mt-2">Organizations Secured</p>
+            </div>
+            <div class="cyber-card p-6 text-center glow-green">
+              <div class="stat-number text-3xl lg:text-4xl">200+</div>
+              <p class="font-mono text-xs text-[#5a7a5a] mt-2">Students</p>
+            </div>
+            <div class="cyber-card p-6 text-center glow-green">
+              <div class="stat-number text-3xl lg:text-4xl">3+</div>
+              <p class="font-mono text-xs text-[#5a7a5a] mt-2">Years Experience</p>
+            </div>
+            <div class="cyber-card p-6 text-center glow-green">
+              <div class="stat-number text-3xl lg:text-4xl">7+</div>
+              <p class="font-mono text-xs text-[#5a7a5a] mt-2">Certifications</p>
+            </div>
+          </div>
+
+          <!-- Recognition -->
+          <div class="cyber-card p-5">
+            <p class="font-mono text-xs text-[#00ff41] mb-3">// Recognition</p>
+            <div class="space-y-3">
+              <div class="flex items-start gap-3">
+                <svg class="w-4 h-4 text-[#00ff41] mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+                <span class="text-sm text-[#7a9a7a]">Ranked #1 Best Ethical Hacker — Nigeria (2026)</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <svg class="w-4 h-4 text-[#00ff41] mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+                <span class="text-sm text-[#7a9a7a]">Top 3% — AfriHackBox Leaderboard</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <svg class="w-4 h-4 text-[#00ff41] mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+                <span class="text-sm text-[#7a9a7a]">Speaker — TheHackersConference(2025), JAN(2024) Ondo State</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== SKILLS SECTION ====== -->
+  <section id="skills" class="relative py-24 lg:py-32 bg-[#080c08]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="reveal">
+        <div class="flex items-center gap-4 mb-16">
+          <span class="font-mono text-[#00ff41] text-sm">// 02</span>
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#d0e0d0] font-mono">Skills & Arsenal</h2>
+          <div class="flex-1 h-px bg-gradient-to-r from-[#1a3a1a] to-transparent"></div>
+        </div>
+      </div>
+
+      <!-- Skill Categories -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+        <!-- Penetration Testing -->
+        <div class="reveal cyber-card p-6">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-9 h-9 rounded-lg bg-[#00ff41]/10 border border-[#1a3a1a] flex items-center justify-center">
+              <svg class="w-5 h-5 text-[#00ff41]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              </svg>
+            </div>
+            <h3 class="font-mono text-sm font-semibold text-[#d0e0d0]">Penetration Testing</h3>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="tool-tag">Metasploit</span>
+            <span class="tool-tag">Burp Suite</span>
+            <span class="tool-tag">Nmap</span>
+            <span class="tool-tag">Nessus</span>
+            <span class="tool-tag">OpenVAS</span>
+            <span class="tool-tag">sqlmap</span>
+            <span class="tool-tag">Hashcat</span>
+            <span class="tool-tag">Mimikatz</span>
+            <span class="tool-tag">Kali Tools</span>
+            
+          </div>
+          <div class="mt-5">
+            <div class="flex justify-between text-xs font-mono mb-1.5">
+              <span class="text-[#5a7a5a]">Proficiency</span>
+              <span class="text-[#00ff41]">98%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-bar-fill" style="width: 98%"></div></div>
+          </div>
+        </div>
+
+        <!-- Network Security -->
+        <div class="reveal cyber-card p-6" style="transition-delay: 0.1s">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-9 h-9 rounded-lg bg-[#00ff41]/10 border border-[#1a3a1a] flex items-center justify-center">
+              <svg class="w-5 h-5 text-[#00ff41]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.858 15.355-5.858 21.213 0" />
+              </svg>
+            </div>
+            <h3 class="font-mono text-sm font-semibold text-[#d0e0d0]">Network Security</h3>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="tool-tag">Wireshark</span>
+            <span class="tool-tag">pfSense</span>
+            <span class="tool-tag">ELK Stack</span>
+            <span class="tool-tag">Snort</span>
+            <span class="tool-tag">Splunk</span>
+            <span class="tool-tag">Wazuh</span>
+            <span class="tool-tag">Cisco IOS</span>
+            <span class="tool-tag">IPSec/VPN</span>
+          </div>
+          <div class="mt-5">
+            <div class="flex justify-between text-xs font-mono mb-1.5">
+              <span class="text-[#5a7a5a]">Proficiency</span>
+              <span class="text-[#00ff41]">94%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-bar-fill" style="width: 94%"></div></div>
+          </div>
+        </div>
+
+        <!-- Web Security -->
+        <div class="reveal cyber-card p-6" style="transition-delay: 0.2s">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-9 h-9 rounded-lg bg-[#00ff41]/10 border border-[#1a3a1a] flex items-center justify-center">
+              <svg class="w-5 h-5 text-[#00ff41]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+              </svg>
+            </div>
+            <h3 class="font-mono text-sm font-semibold text-[#d0e0d0]">Web Security</h3>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="tool-tag">OWASP Top 10</span>
+            <span class="tool-tag">XSS</span>
+            <span class="tool-tag">SQLi</span>
+            <span class="tool-tag">ZAP</span>
+            <span class="tool-tag">CSRF</span>
+            <span class="tool-tag">JWT Attacks</span>
+            <span class="tool-tag">API Security</span>
+            <span class="tool-tag">DVWA</span>
+          </div>
+          <div class="mt-5">
+            <div class="flex justify-between text-xs font-mono mb-1.5">
+              <span class="text-[#5a7a5a]">Proficiency</span>
+              <span class="text-[#00ff41]">86%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-bar-fill" style="width: 86%"></div></div>
+          </div>
+        </div>
+
+        <!-- Reverse Engineering -->
+        <div class="reveal cyber-card p-6" style="transition-delay: 0.3s">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-9 h-9 rounded-lg bg-[#00ff41]/10 border border-[#1a3a1a] flex items-center justify-center">
+              <svg class="w-5 h-5 text-[#00ff41]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+              </svg>
+            </div>
+            <h3 class="font-mono text-sm font-semibold text-[#d0e0d0]">Reverse Engineering</h3>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="tool-tag">Ghidra</span>
+            <span class="tool-tag">IDA Pro</span>
+            <span class="tool-tag">x64dbg</span>
+            <span class="tool-tag">OllyDbg</span>
+            <span class="tool-tag">Radare2</span>
+            <span class="tool-tag">dnSpy</span>
+            <span class="tool-tag">Binary Ninja</span>
+          </div>
+          <div class="mt-5">
+            <div class="flex justify-between text-xs font-mono mb-1.5">
+              <span class="text-[#5a7a5a]">Proficiency</span>
+              <span class="text-[#00ff41]">58%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-bar-fill" style="width: 58%"></div></div>
+          </div>
+        </div>
+
+        <!-- Red Teaming -->
+        <div class="reveal cyber-card p-6" style="transition-delay: 0.4s">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-9 h-9 rounded-lg bg-[#00ff41]/10 border border-[#1a3a1a] flex items-center justify-center">
+              <svg class="w-5 h-5 text-[#00ff41]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+            </div>
+            <h3 class="font-mono text-sm font-semibold text-[#d0e0d0]">Red Teaming</h3>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="tool-tag">Cobalt Strike</span>
+            <span class="tool-tag">Sliver C2</span>
+            <span class="tool-tag">Evilginx2</span>
+            <span class="tool-tag">Social Engineer Toolkit</span>
+            <span class="tool-tag">BeEF</span>
+            <span class="tool-tag">Powershell Empire</span>
+          </div>
+          <div class="mt-5">
+            <div class="flex justify-between text-xs font-mono mb-1.5">
+              <span class="text-[#5a7a5a]">Proficiency</span>
+              <span class="text-[#00ff41]">72%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-bar-fill" style="width: 72%"></div></div>
+          </div>
+        </div>
+
+        <!-- Programming -->
+        <div class="reveal cyber-card p-6" style="transition-delay: 0.5s">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-9 h-9 rounded-lg bg-[#00ff41]/10 border border-[#1a3a1a] flex items-center justify-center">
+              <svg class="w-5 h-5 text-[#00ff41]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.7 6.3a1 1 0 00 0 1.4l1.6 1.6a1 1 0 00 1.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" />
+              </svg>
+            </div>
+            <h3 class="font-mono text-sm font-semibold text-[#d0e0d0]">Programming & Scripting</h3>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="tool-tag">Python</span>
+            <span class="tool-tag">Bash</span>
+            <span class="tool-tag">PowerShell</span>
+            <span class="tool-tag">JavaScript</span>
+            <span class="tool-tag">C/C++</span>
+            <span class="tool-tag">SQL</span>
+          </div>
+          <div class="mt-5">
+            <div class="flex justify-between text-xs font-mono mb-1.5">
+              <span class="text-[#5a7a5a]">Proficiency</span>
+              <span class="text-[#00ff41]">90%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-bar-fill" style="width: 90%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Certs banner -->
+      <div class="reveal cyber-card p-6 sm:p-8 text-center max-w-4xl mx-auto">
+        <p class="font-mono text-xs text-[#00ff41] mb-4">// Certified & Verified</p>
+        <div class="flex flex-wrap justify-center gap-3">
+          <span class="tool-tag text-xs sm:text-sm !px-4 !py-2">CEH v12</span>
+          <span class="tool-tag text-xs sm:text-sm !px-4 !py-2">OSCP</span>
+          <span class="tool-tag text-xs sm:text-sm !px-4 !py-2">CISSP</span>
+          <span class="tool-tag text-xs sm:text-sm !px-4 !py-2">CompTIA Security+</span>
+          <span class="tool-tag text-xs sm:text-sm !px-4 !py-2">CCNA Security</span>
+          <span class="tool-tag text-xs sm:text-sm !px-4 !py-2">PNPT</span>
+          <span class="tool-tag text-xs sm:text-sm !px-4 !py-2">CC (ISC)2</span>
+          <span class="tool-tag text-xs sm:text-sm !px-4 !py-2">ISO 27001 LA</span>
+          <span class="tool-tag text-xs sm:text-sm !px-4 !py-2">eCPPTv2</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== PROJECTS / OPERATIONS SECTION ====== -->
+  <section id="projects" class="relative py-24 lg:py-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="reveal">
+        <div class="flex items-center gap-4 mb-16">
+          <span class="font-mono text-[#00ff41] text-sm">// 03</span>
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#d0e0d0] font-mono">Operations</h2>
+          <div class="flex-1 h-px bg-gradient-to-r from-[#1a3a1a] to-transparent"></div>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Project 1 -->
+        <div class="reveal cyber-card overflow-hidden group">
+          <div class="h-48 bg-gradient-to-br from-[#0f1a0f] to-[#0a120a] relative overflow-hidden">
+            <div class="absolute inset-0 opacity-10">
+              <svg class="w-full h-full" viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 100 Q 50 50, 100 100 T 200 100 T 300 100 T 400 100" stroke="#00ff41" stroke-width="0.5"/>
+                <path d="M0 120 Q 50 70, 100 120 T 200 120 T 300 120 T 400 120" stroke="#00ff41" stroke-width="0.3" opacity="0.5"/>
+              </svg>
+            </div>
+            <div class="absolute top-4 left-4">
+              <span class="px-2 py-1 rounded text-[10px] font-mono bg-[#00ff41]/10 text-[#00ff41] border border-[#1a3a1a]">Penetration Test</span>
+            </div>
+            <div class="absolute bottom-4 left-4 right-4">
+              <div class="flex items-center gap-2 text-[#3a5a3a] font-mono text-[10px]">
+                <span class="status-dot"></span>
+                <span>Completed — 2026</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-5">
+            <h3 class="font-mono text-sm font-bold text-[#d0e0d0] mb-2">Web Penetration testing Audit</h3>
+            <p class="text-xs text-[#5a7a5a] leading-relaxed mb-4">
+              Full-scope penetration test for Nigeria's fintech and tech academy. Identified over 20 critical vulnerabilities
+              including reflected XSS in client side API and misconfigured server directory exposing sensitive server files.
+            </p>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-[#0f130f] text-[#5a7a5a] border border-[#1a3a1a]">OWASP Top 10</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-[#0f130f] text-[#5a7a5a] border border-[#1a3a1a]">API Security</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-[#0f130f] text-[#5a7a5a] border border-[#1a3a1a]">Server Hardening</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="reveal cyber-card overflow-hidden group" style="transition-delay: 0.1s">
+          <div class="h-48 bg-gradient-to-br from-[#0f1a0f] to-[#0a120a] relative overflow-hidden">
+            <div class="absolute inset-0 opacity-10">
+              <svg class="w-full h-full" viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="50" y="40" width="80" height="120" stroke="#00ff41" stroke-width="0.5" fill="none"/>
+                <rect x="140" y="40" width="80" height="120" stroke="#00ff41" stroke-width="0.5" fill="none"/>
+                <rect x="230" y="40" width="80" height="120" stroke="#00ff41" stroke-width="0.3" fill="none" opacity="0.5"/>
+              </svg>
+            </div>
+            <div class="absolute top-4 left-4">
+              <span class="px-2 py-1 rounded text-[10px] font-mono bg-[#00ff41]/10 text-[#00ff41] border border-[#1a3a1a]">Red Team</span>
+            </div>
+            <div class="absolute bottom-4 left-4 right-4">
+              <div class="flex items-center gap-2 text-[#3a5a3a] font-mono text-[10px]">
+                <span class="status-dot"></span>
+                <span>Completed — 2026</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-5">
+            <h3 class="font-mono text-sm font-bold text-[#d0e0d0] mb-2">Red Team Op - APT</h3>
+            <p class="text-xs text-[#5a7a5a] leading-relaxed mb-4">
+              Simulated APT like red team engagement with my students against Nigeria's largest healthcare platform.
+              Successfully breached network perimeter via spear-phishing, achieved domain admin in 4 days,
+              and extracted simulated patient data.
+            </p>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-[#0f130f] text-[#5a7a5a] border border-[#1a3a1a]">Social Engineering</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-[#0f130f] text-[#5a7a5a] border border-[#1a3a1a]">AD Attacks</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-[#0f130f] text-[#5a7a5a] border border-[#1a3a1a]">C2</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="reveal cyber-card overflow-hidden group" style="transition-delay: 0.2s">
+          <div class="h-48 bg-gradient-to-br from-[#0f1a0f] to-[#0a120a] relative overflow-hidden">
+            <div class="absolute inset-0 opacity-10">
+              <svg class="w-full h-full" viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="100" cy="100" r="40" stroke="#00ff41" stroke-width="0.5" fill="none"/>
+                <circle cx="200" cy="100" r="40" stroke="#00ff41" stroke-width="0.5" fill="none"/>
+                <line x1="140" y1="100" x2="160" y2="100" stroke="#00ff41" stroke-width="0.5"/>
+                <line x1="100" y1="60" x2="100" y2="30" stroke="#00ff41" stroke-width="0.5"/>
+                <line x1="100" y1="140" x2="100" y2="170" stroke="#00ff41" stroke-width="0.5"/>
+              </svg>
+            </div>
+            <div class="absolute top-4 left-4">
+              <span class="px-2 py-1 rounded text-[10px] font-mono bg-[#00ff41]/10 text-[#00ff41] border border-[#1a3a1a]">Security Architecture</span>
+            </div>
+            <div class="absolute bottom-4 left-4 right-4">
+              <div class="flex items-center gap-2 text-[#3a5a3a] font-mono text-[10px]">
+                <span class="status-dot"></span>
+                <span>Completed — 2026</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-5">
+            <h3 class="font-mono text-sm font-bold text-[#d0e0d0] mb-2">E-Commerce Fortification</h3>
+            <p class="text-xs text-[#5a7a5a] leading-relaxed mb-4">
+              End-to-end security architecture redesign for a leading Nigerian e-commerce platform.
+              Implemented WAF, SIEM pipeline, zero-trust network segmentation, and automated incident
+              response reducing breach risk by 85%.
+            </p>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-[#0f130f] text-[#5a7a5a] border border-[#1a3a1a]">Zero Trust</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-[#0f130f] text-[#5a7a5a] border border-[#1a3a1a]">SIEM</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-[#0f130f] text-[#5a7a5a] border border-[#1a3a1a]">Cloud Sec</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== TESTIMONIALS ====== -->
+  <section class="relative py-24 bg-[#080c08]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="reveal">
+        <div class="flex items-center gap-4 mb-16">
+          <span class="font-mono text-[#00ff41] text-sm">// 04</span>
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#d0e0d0] font-mono">Client Feedback</h2>
+          <div class="flex-1 h-px bg-gradient-to-r from-[#1a3a1a] to-transparent"></div>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="reveal cyber-card p-6">
+          <div class="flex items-center gap-1 mb-4">
+            <svg class="w-4 h-4 text-[#00ff41]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+            <svg class="w-4 h-4 text-[#00ff41]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+            <svg class="w-4 h-4 text-[#00ff41]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+            <svg class="w-4 h-4 text-[#00ff41]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+            <svg class="w-4 h-4 text-[#00ff41]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+          </div>
+          <p class="text-xs text-[#7a9a7a] leading-relaxed mb-4">
+            "YahwehBoy's penetration test uncovered critical vulnerabilities our internal team had missed for months.
+            His report was thorough, actionable, and his remediation guidance was invaluable."
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-gradient-to-br from-[#00ff41]/20 to-[#0aff50]/10 border border-[#1a3a1a] flex items-center justify-center font-mono text-xs text-[#00ff41]">M</div>
+            <div>
+              <p class="font-mono text-xs font-semibold text-[#d0e0d0]">Maureen</p>
+              <p class="font-mono text-[10px] text-[#3a5a3a]">Founder, Cipher Software Nigeria</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal cyber-card p-6" style="transition-delay: 0.1s">
+          <div class="flex items-center gap-1 mb-4">
+            <svg class="w-4 h-4 text-[#00ff41]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+            <svg class="w-4 h-4 text-[#00ff41]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+            <svg class="w-4 h-4 text-[#00ff41]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+            <svg class="w-4 h-4 text-[#00ff41]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+            <svg class="w-4 h-4 text-[#00ff41]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+          </div>
+          <p class="text-xs text-[#7a9a7a] leading-relaxed mb-4">
+            "Working with YahwehBoy elevated our entire security posture. His red team exercise exposed gaps
+            we never considered and his training sessions empowered our team tremendously."
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-gradient-to-br from-[#00ff41]/20 to-[#0aff50]/10 border border-[#1a3a1a] flex items-center justify-center font-mono text-xs text-[#00ff41]">OV</div>
+            <div>
+              <p class="font-mono text-xs font-semibold text-[#d0e0d0]">Olatunde Victor </p>
+              <p class="font-mono text-[10px] text-[#3a5a3a]">InfoSec Lead, Flutterwave</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal cyber-card p-6" style="transition-delay: 0.2s">
+          <div class="flex items-center gap-1 mb-4">
+            <svg class="w-4 h-4 text-[#00ff41]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+            <svg class="w-4 h-4 text-[#00ff41]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+            <svg class="w-4 h-4 text-[#00ff41]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+            <svg class="w-4 h-4 text-[#00ff41]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+            <svg class="w-4 h-4 text-[#00ff41]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+          </div>
+          <p class="text-xs text-[#7a9a7a] leading-relaxed mb-4">
+            "YahwehBoy is the best cybersecurity professional and ethical hacker I've worked with in Nigeria. His depth of
+            knowledge in both offensive and defensive security is remarkable."
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-gradient-to-br from-[#00ff41]/20 to-[#0aff50]/10 border border-[#1a3a1a] flex items-center justify-center font-mono text-xs text-[#00ff41]">FI</div>
+            <div>
+              <p class="font-mono text-xs font-semibold text-[#d0e0d0]">Favour Isioma</p>
+              <p class="font-mono text-[10px] text-[#3a5a3a]">CEO, Speedy Gadgets PLC</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== CONTACT SECTION ====== -->
+  <section id="contact" class="relative py-24 lg:py-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="reveal">
+        <div class="flex items-center gap-4 mb-16">
+          <span class="font-mono text-[#00ff41] text-sm">// 05</span>
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#d0e0d0] font-mono">Initiate Contact</h2>
+          <div class="flex-1 h-px bg-gradient-to-r from-[#1a3a1a] to-transparent"></div>
+        </div>
+      </div>
+
+      <div class="grid lg:grid-cols-5 gap-12 lg:gap-16">
+        <!-- Contact info -->
+        <div class="lg:col-span-2 reveal space-y-6">
+          <div class="rounded-lg border border-[#1a3a1a] overflow-hidden">
+            <div class="terminal-bar">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+              <span class="font-mono text-[10px] text-[#5a7a5a] ml-2">~/contact.info</span>
+            </div>
+            <div class="p-5 bg-[#0a0e0a] font-mono text-xs space-y-3">
+              <p><span class="text-[#5a7a5a]">email    </span> <span class="text-[#d0e0d0]">omotayoolaolekan01@gmail.com</span></p>
+              <p><span class="text-[#5a7a5a]">phone   </span> <span class="text-[#d0e0d0]">+234.814.087.9281</span></p>
+              <p><span class="text-[#5a7a5a]">twitter  </span> <span class="text-[#00ff41]">@Yahwehboy01</span></p>
+              <p><span class="text-[#5a7a5a]">linkedin </span> <span class="text-[#00ff41]">/in/olalekan-omotayo-168119248</span></p>
+              <p><span class="text-[#5a7a5a]">github   </span> <span class="text-[#00ff41]">/yahwehboy</span></p>
+              <p><span class="text-[#5a7a5a]">hackthebox</span> <span class="text-[#00ff41]">/u/Yahboy_htb</span></p>
+              <p><span class="text-[#5a7a5a]">pgp key  </span> <span class="text-[#7a9a7a]">0x3A1B 9C4D 8E2F 7B60</span></p>
+            </div>
+          </div>
+
+          <div class="cyber-card p-5">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="w-2 h-2 rounded-full bg-[#00ff41] animate-pulse"></span>
+              <span class="font-mono text-xs text-[#7a9a7a]">Response time: <span class="text-[#00ff41]">&lt; 24 hours</span></span>
+            </div>              <p class="font-mono text-[10px] text-[#3a5a3a] leading-relaxed">
+                PGP-encrypted communication preferred for sensitive inquiries.
+                All consultations begin with a complimentary 30-minute discovery call.
+              </p>
+          </div>
+        </div>
+
+        <!-- Contact form -->
+        <div class="lg:col-span-3 reveal">
+          <form id="contact-form" class="space-y-5">
+            <div class="grid sm:grid-cols-2 gap-5">
+              <div>
+                <label class="block font-mono text-xs text-[#5a7a5a] mb-2" for="name">Your Name <span class="text-[#00ff41]">*</span></label>
+                <input type="text" id="name" name="name" required class="cyber-input" placeholder="e.g. John Doe" />
+              </div>
+              <div>
+                <label class="block font-mono text-xs text-[#5a7a5a] mb-2" for="email">Email <span class="text-[#00ff41]">*</span></label>
+                <input type="email" id="email" name="email" required class="cyber-input" placeholder="you@company.com" />
+              </div>
+            </div>
+            <div>
+              <label class="block font-mono text-xs text-[#5a7a5a] mb-2" for="organization">Organization</label>
+              <input type="text" id="organization" name="organization" class="cyber-input" placeholder="Your company (optional)" />
+            </div>
+            <div>
+              <label class="block font-mono text-xs text-[#5a7a5a] mb-2" for="type">Engagement Type</label>
+              <select id="type" name="type" class="cyber-input">
+                <option value="" disabled selected class="bg-[#0a0e0a]">Select engagement type</option>
+                <option value="pentest" class="bg-[#0a0e0a]">Penetration Test</option>
+                <option value="redteam" class="bg-[#0a0e0a]">Red Team Exercise</option>
+                <option value="audit" class="bg-[#0a0e0a]">Security Audit</option>
+                <option value="training" class="bg-[#0a0e0a]">Training / Workshop</option>
+                <option value="consulting" class="bg-[#0a0e0a]">Consulting</option>
+                <option value="other" class="bg-[#0a0e0a]">Other</option>
+              </select>
+            </div>
+            <div>
+              <label class="block font-mono text-xs text-[#5a7a5a] mb-2" for="message">Message <span class="text-[#00ff41]">*</span></label>
+              <textarea id="message" name="message" rows="4" required class="cyber-input resize-none" placeholder="Describe your security needs..."></textarea>
+            </div>
+            <button type="submit" class="cyber-btn w-full flex items-center justify-center gap-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+              </svg>
+              Send Encrypted Message
+            </button>
+            <p id="form-status" class="text-center font-mono text-xs text-[#3a5a3a] mt-3"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="relative border-t border-[#1a3a1a] bg-[#050805]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <div class="px-2 h-8 rounded-lg bg-gradient-to-br from-[#00ff41] to-[#0aff50] flex items-center justify-center font-mono font-bold text-[#0a0e0a] text-xs">YahwehBoy</div>
+          <p class="font-mono text-xs text-[#3a5a3a]">© 2026 YahwehBoy — All rights reserved.</p>
+        </div>
+        <div class="flex items-center gap-6">
+          <a href="#" class="font-mono text-[10px] text-[#3a5a3a] hover:text-[#7a9a7a] transition-colors">PGP Key</a>
+          <a href="#" class="font-mono text-[10px] text-[#3a5a3a] hover:text-[#7a9a7a] transition-colors">Privacy Policy</a>
+          <a href="#" class="font-mono text-[10px] text-[#3a5a3a] hover:text-[#7a9a7a] transition-colors">Security.txt</a>
+        </div>
+      </div>
+      <div class="mt-4 text-center">
+        <p class="font-mono text-[10px] text-[#1a3a1a]">
+          <span class="text-[#3a5a3a]">[</span> secured with <span class="text-[#00ff41]">♥</span> and <span class="text-[#00ff41]">rust</span> <span class="text-[#3a5a3a]">]</span>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ====== JAVASCRIPT ====== -->
+  <script>
+    // --- Matrix Rain Effect ---
+    (function() {
+      const canvas = document.getElementById('matrix-canvas');
+      const ctx = canvas.getContext('2d');
+
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas);
+
+      const chars = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン0123456789ABCDEF<>/{}[]|&^%~#';
+      const fontSize = 14;
+      const columns = Math.floor(canvas.width / fontSize);
+      const drops = Array(columns).fill(1);
+
+      function drawMatrix() {
+        ctx.fillStyle = 'rgba(10, 14, 10, 0.05)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = '#00ff41';
+        ctx.font = fontSize + 'px monospace';
+
+        for (let i = 0; i < drops.length; i++) {
+          const char = chars[Math.floor(Math.random() * chars.length)];
+          const x = i * fontSize;
+          const y = drops[i] * fontSize;
+
+          ctx.fillStyle = i % 3 === 0 ? '#0aff50' : '#00ff41';
+          ctx.globalAlpha = Math.random() * 0.5 + 0.3;
+          ctx.fillText(char, x, y);
+
+          if (y > canvas.height && Math.random() > 0.975) {
+            drops[i] = 0;
+          }
+          drops[i] += 0.5;
+        }
+      }
+
+      setInterval(drawMatrix, 50);
+    })();
+
+    // --- Floating Particles ---
+    (function() {
+      const container = document.getElementById('particles');
+      for (let i = 0; i < 30; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDuration = (Math.random() * 15 + 10) + 's';
+        particle.style.animationDelay = Math.random() * 15 + 's';
+        particle.style.width = (Math.random() * 3 + 1) + 'px';
+        particle.style.height = particle.style.width;
+        container.appendChild(particle);
+      }
+    })();
+
+    // --- Typewriter Effect ---
+    (function() {
+      const strings = [
+        'Pentester | Red Team Operator | Security Architect',
+        'Securing Nigeria\'s digital future — one vulnerability at a time.',
+        'OSCP | CEH v12 | CISSP | CREST — Certified.',
+        'Hack The Box Top 3% Global Leaderboard.',
+        '3+ years of offensive security experience.'
+      ];
+      let strIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+      const el = document.getElementById('typewriter');
+
+      function type() {
+        const current = strings[strIndex];
+
+        if (!isDeleting) {
+          el.textContent = current.substring(0, charIndex + 1);
+          charIndex++;
+          if (charIndex === current.length) {
+            setTimeout(() => { isDeleting = true; }, 2000);
+            setTimeout(type, 2000);
+            return;
+          }
+          setTimeout(type, 40 + Math.random() * 60);
+        } else {
+          el.textContent = current.substring(0, charIndex - 1);
+          charIndex--;
+          if (charIndex === 0) {
+            isDeleting = false;
+            strIndex = (strIndex + 1) % strings.length;
+            setTimeout(type, 300);
+            return;
+          }
+          setTimeout(type, 20 + Math.random() * 30);
+        }
+      }
+      type();
+    })();
+
+    // --- Scroll Reveal Animations ---
+    (function() {
+      const revealElements = document.querySelectorAll('.reveal');
+
+      function checkReveal() {
+        const windowHeight = window.innerHeight;
+        revealElements.forEach(el => {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < windowHeight * 0.85) {
+            el.classList.add('visible');
+          }
+        });
+      }
+
+      window.addEventListener('scroll', checkReveal);
+      window.addEventListener('resize', checkReveal);
+      checkReveal(); // Initial check
+    })();
+
+    // --- Skill Bar Animation on Scroll ---
+    (function() {
+      const skillBars = document.querySelectorAll('.skill-bar-fill');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const bar = entry.target;
+            const width = bar.style.width;
+            bar.style.width = '0%';
+            setTimeout(() => {
+              bar.style.width = width;
+            }, 100);
+          }
+        });
+      }, { threshold: 0.3 });
+
+      skillBars.forEach(bar => observer.observe(bar));
+    })();
+
+    // --- Mobile Menu Toggle ---
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuToggle?.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Close mobile menu on link click
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // --- Smooth Scroll for Nav Links ---
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // --- Contact Form Handler ---
+    const contactForm = document.getElementById('contact-form');
+    const formStatus = document.getElementById('form-status');
+
+    contactForm?.addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const submitBtn = this.querySelector('button[type="submit"]');
+      const originalText = submitBtn.innerHTML;
+      submitBtn.innerHTML = `
+        <svg class="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+        </svg>
+        Encrypting & Sending...
+      `;
+      submitBtn.disabled = true;
+      formStatus.textContent = '';
+
+      // Simulate sending encrypted message
+      await new Promise(resolve => setTimeout(resolve, 2000));
+
+      submitBtn.innerHTML = originalText;
+      submitBtn.disabled = false;
+      formStatus.textContent = '✓ Message encrypted and sent successfully. Expect a response within 24 hours.';
+      formStatus.className = 'text-center font-mono text-xs text-[#00ff41] mt-3';
+      this.reset();
+    });
+
+    // --- Sticky Nav Background Enhancement ---
+    const nav = document.querySelector('nav');
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.scrollY;
+      if (currentScroll > 100) {
+        nav.style.borderBottomColor = 'rgba(0, 255, 65, 0.15)';
+      } else {
+        nav.style.borderBottomColor = '#1a3a1a';
+      }
+      lastScroll = currentScroll;
+    });
+
+    // --- Console Easter Egg ---
+    console.log('%c🔒 YahwehBoy — Cybersecurity Portfolio', 'font-size: 20px; font-weight: bold; color: #00ff41;');
+    console.log('%cInterested in security? Let\'s talk: omotayoolaolekan01@gmail.com', 'color: #7a9a7a; font-size: 14px;');
+    console.log('%cPGP Key: 0x3A1B 9C4D 8E2F 7B60', 'color: #3a5a3a; font-size: 12px;');
+
+    console.log(
+      '%c  ╔══════════════════════════════════╗\n' +
+      '  ║  🔴 RECRUITERS — HIRE ME!         ║\n' +
+      '  ║  Nigeria\'s #1 Ethical Hacker      ║\n' +
+      '  ║  OSCP | CEH | CISSP | CREST       ║\n' +
+      '  ║  Let\'s secure your organization    ║\n' +
+      '  ╚══════════════════════════════════╝',
+      'color: #00ff41; font-family: monospace; font-weight: bold;'
+    );
+
+
+    //--- EmailJS Configuration ---
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent page reload
+
+  // use emailjs.sendForm(serviceID, templateID, formElement)
+  emailjs.sendForm('service_lswo45r', 'template_b9fs4z8', this)
+    .then(() => {
+      alert('Email sent successfully!');
+      this.reset(); // Clear the form fields
+    }, (error) => {
+      console.error('Failed to send email:', error);
+      alert('Failed to send message. Please try again.');
+    });
+});
+
+  </script>
+
+</body>
+</html>
+
